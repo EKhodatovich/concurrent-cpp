@@ -1,0 +1,49 @@
+# Compiled things
+build
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+CMakeUserPresets.json
+
+# Allow root-level Makefile
+!/Makefile
+
+# Vim
+**/**.swp
+
+# Vscode
+.vscode
+
+# Idea
+.idea
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Shared objects
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# MacOS
+**/.DS_Store
