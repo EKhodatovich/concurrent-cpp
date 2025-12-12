@@ -12,7 +12,7 @@ add_executable(merkle_tree main.cpp)
 
 # Include directories
 target_include_directories(merkle_tree PRIVATE ${ZLIB_INCLUDE_DIRS})
-
+target_compile_definitions(merkle_tree PRIVATE DEBUG)
 # Link libraries
 target_link_libraries(merkle_tree PRIVATE
 	Threads::Threads
