@@ -47,3 +47,5 @@ CMakeUserPresets.json
 
 # MacOS
 **/.DS_Store
+
+*.idx
