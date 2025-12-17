@@ -50,5 +50,5 @@ private:
     std::mutex& _debug_mutex;
     std::vector<filehash_t>& _hashes;
     std::vector<filehash_t>& _next_level;
-    int _i;
+    long unsigned int _i;
 };
