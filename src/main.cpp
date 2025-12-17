@@ -41,7 +41,7 @@ int main() {
 	std::mutex mtx;
 	ThreadPool pool(NUMBER_OF_THREADS);
 	
-	for (int i = 0; i < files.size(); ++i) {
+	for (long unsigned int i = 0; i < files.size(); ++i) {
 		auto& file = files[i];
 		pool.submit_task(std::make_unique<ComputeCrcTask>(file, mtx, hashes, i));
 	}
