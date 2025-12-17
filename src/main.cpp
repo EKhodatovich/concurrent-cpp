@@ -33,7 +33,8 @@ filehash_t compute_file_crc32(const std::string& filepath) {
 	char buffer[4096];
 	uint32_t total_len = 0; 
 
-	while (file.read(buffer, sizeof(buffer))) {
+	while (!file.eof()) {
+		file.read(buffer, sizeof(buffer));
 		uint32_t current_len = file.gcount();
 		crc = crc32(crc, reinterpret_cast<Bytef*>(buffer), current_len);
 		total_len += current_len;
@@ -49,7 +50,7 @@ filehash_t combine_file_crc32(const filehash_t &hash1, const filehash_t &hash2) 
 	return std::make_pair(crc_combined, len_combined);
 }
 
-void combine_crc32(const std::vector<filehash_t>& hashes, std::vector<filehash_t>& next_level, std::mutex& mtx, const int i)
+void combine_crc32(const std::vector<filehash_t>& hashes, std::vector<filehash_t>& next_level, std::mutex& mtx, const long unsigned int i)
 {
 	
 	filehash_t hash1 = hashes[i];
@@ -89,7 +90,7 @@ int main() {
 
 	std::mutex mtx;
 	DEBUG_LOG("Step 1: Computing CRC32 for each file...");
-	for (int i = 0; i < files.size(); ++i) {
+	for (long unsigned int i = 0; i < files.size(); ++i) {
 		auto& file = files[i];
 		threads.push_back(
 			std::thread ([i, &hashes, &file, &mtx](){
