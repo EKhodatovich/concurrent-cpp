@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -28,16 +29,16 @@ filehash_t compute_file_crc32(const std::string& filepath) {
 
 	uint32_t crc = crc32(0L, Z_NULL, 0);
 	char buffer[4096];
+	uint32_t total_len = 0; 
 
-	while (file.read(buffer, sizeof(buffer))) {
-		crc = crc32(crc, reinterpret_cast<Bytef*>(buffer), file.gcount());
+	while (!file.eof()) {
+		file.read(buffer, sizeof(buffer));
+		uint32_t current_len = file.gcount();
+		crc = crc32(crc, reinterpret_cast<Bytef*>(buffer), current_len);
+		total_len += current_len;
 	}
 
-	if (file.gcount() > 0) {
-		crc = crc32(crc, reinterpret_cast<Bytef*>(buffer), file.gcount());
-	}
-
-	return std::make_pair(crc, file.gcount());
+	return std::make_pair(crc, total_len);
 }
 
 filehash_t combine_file_crc32(const filehash_t &hash1, const filehash_t &hash2) {

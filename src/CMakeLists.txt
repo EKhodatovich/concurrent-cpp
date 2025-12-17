@@ -27,3 +27,11 @@ set_target_properties(merkle_tree PROPERTIES
 	CXX_STANDARD_REQUIRED ON
 	CXX_EXTENSIONS OFF
 )
+
+# Enable compiler warnings
+target_compile_options(merkle_tree PRIVATE
+	-Wall          # Enable most common warnings
+	-Wextra        # Enable additional warnings
+	-Wpedantic     # Enable pedantic warnings (strict ISO C++ compliance)
+	-Werror
+)
