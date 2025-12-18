@@ -1,8 +1,9 @@
-#include "thread_pool.h"
 #include <condition_variable>
 #include <memory>
 #include <mutex>
 #include <utility>
+
+#include "thread_pool.h"
 
 void ThreadPool::worker_loop()
 {

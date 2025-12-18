@@ -1,9 +1,8 @@
-#include "task.h"
 #include <fstream>
 #include <iostream>
 #include <zlib.h>
-#include "typedefs.h"
 
+#include "task.h"
 
 filehash_t compute_file_crc32(const std::string& filepath) {
 	std::ifstream file(filepath, std::ios::binary);

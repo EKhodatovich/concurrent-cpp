@@ -1,24 +1,10 @@
-#include <atomic>
-#include <bits/types/struct_timeval.h>
-#include <cerrno>
-#include <cstddef>
-#include <event2/event.h>
-#include <event2/util.h>
 #include <iostream>
-#include <memory>
-#include <netdb.h>
-#include <string>
-#include <sys/types.h>
 #include <utility>
-#include <vector>
 #include <zlib.h>
 #include <algorithm> 
-#include <mutex>
 #include <filesystem>
 #include <fcntl.h>
 #include "event2/event.h"
-#include "event2/event_struct.h"
-#include <sys/time.h>
 
 #include "typedefs.h"
 #include "task.h"
