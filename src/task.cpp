@@ -16,11 +16,13 @@ filehash_t compute_file_crc32(const std::string& filepath) {
 	char buffer[4096];
 	uint32_t total_len = 0; 
 	
-	while (file.read(buffer, sizeof(buffer))) {
+	while (!file.eof()) {
+		file.read(buffer, sizeof(buffer));
 	    uint32_t current_len = file.gcount();
 	    crc = crc32(crc, reinterpret_cast<Bytef*>(buffer), current_len);
 	    total_len += current_len;
 	}
+
 	
 	return std::make_pair(crc, total_len);
 }
